@@ -1,0 +1,24 @@
+<center>
+    <div class="login1">
+        <h1><strong>Register</strong></h1>
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+            <p><input type="hidden" name="mode" value="1" /></p>
+            <p><input type="text" required placeholder="Company Name" id="register_cname" name="register_cname" autofocus="true" required></p>
+            <p><input type="text" required placeholder="First Name" id="register_fname" name="register_fname" autofocus="true" required></p>
+            <p><input type="text" required placeholder="Last Name" id="register_lname" name="register_lname" autofocus="true" required></p>
+            <p><input type="email" required placeholder="Email" id="register_email" name="register_email" autofocus="true" required></p>
+            <p><input type="password" required placeholder="Password" id="register_pass" name="register_pwd" required></p>
+            <p><input type="password" required placeholder="Confirm Password" id="register_confpwd" name="register_confpwd" required></p>
+            <!--<p ><a href="#" >Not Registered?</a></p>-->
+            <p><input type="submit" value="Register"></p>
+            </fieldset>
+        </form>
+        <div>
+            {%for message in messages %}
+            <h4>{{message}}</h4>
+            {% endfor %}
+        </div>
+    </div>
+</center>

@@ -1,0 +1,71 @@
+    <nav>
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        {% if user.is_authenticated %}
+                        {% if user.is_admin is False %}
+                        <li ><a href="{% url 'gallery_with_pk' user.id %}">Gallery</a></li>
+                        
+                        {% else %}
+                        <li ><a href="{% url 'gallery_admin_with_pk' user.id %}">Gallery</a></li>
+
+                        <li ><form action="{% url 'gallery_admin_filter' %}" method="get" name="colorchange" >
+                            {% csrf_token %}
+                                   <select id="company" name="company" style="border:None;color: #fff;background-color: #1abc9c;font-size: 16px;font-weight: 700;padding: 20px;" onChange="form.submit();">
+                                       <option value="" disable hidden  >CompanyName</option>
+                                       <option value="" {% ifequal "" request.GET.company %} selected {% endifequal %} >None </option>
+                                       {% for a in Accounts%}
+                                       <option value="{{a.companyname}}" {% ifequal a.companyname request.GET.company %} selected {% endifequal %} >{{a.companyname}}</option>
+                                       {% endfor %}
+
+                                   </select>
+                                   <select id="category" name="category" style="border:None;color: #fff;background-color: #1abc9c;font-size: 16px;font-weight: 700;padding: 20px;" onChange="form.submit();" >
+                                       <option value=""  disable hidden  >Class</option>
+                                       <option value=""  {% ifequal "" request.GET.category %} selected {% endifequal %}  >None</option>
+                                       <option value="3door" {% ifequal request.GET.category "3door" %} selected  {% endifequal %}   >3-Door</option>
+                                       <option value="4door" {% ifequal request.GET.category "4door" %} selected  {% endifequal %}   >4-Door</option>
+                                       <option value="topmount" {% ifequal request.GET.category "topmount" %} selected  {% endifequal %}   >Top Mount</option>
+                                       <option value="bottomfreezer" {% ifequal request.GET.category "bottomfreezer" %} selected  {% endifequal %}   >Bottom Freezer</option>
+                                       <option value="gasstove" {% ifequal request.GET.category "gasstove" %} selected  {% endifequal %}   >Gas Stove</option>
+                                       <option value="electricstove" {% ifequal request.GET.category "electricstove" %} selected  {% endifequal %}   >Electric Stove</option>
+                                       <option value="basicdryer" {% ifequal request.GET.category "basicdryer" %} selected  {% endifequal %}   >Basic Dryer</option>
+                                       <option value="fldryer" {% ifequal request.GET.category "fldryer" %} selected  {% endifequal %}   >FL Dryer</option>
+                                       <option value="tlwasher" {% ifequal request.GET.category "tlwasher" %} selected  {% endifequal %}   >TL Washer</option>
+                                       <option value="flwasher" {% ifequal request.GET.category "flwasher" %} selected  {% endifequal %}   >FL Washer</option>
+                                       <option value="Sets" {% ifequal request.GET.category "sets" %} selected  {% endifequal %}   >Sets</option>
+                                       <option value="freezer" {% ifequal request.GET.category "freezer" %} selected  {% endifequal %}   >Freezer</option>
+                                       <option value='quaddoor' {% ifequal request.GET.category "quaddoor" %} selected  {% endifequal %} >Quad Door</option>
+                                   </select>
+                                   <select id="color" name="color" style="border:None;color: #fff;background-color: #1abc9c;font-size: 16px;font-weight: 700;padding: 20px;" onChange="form.submit();">
+                                       <option value=""  disable hidden  >Color</option>
+                                       <option value="" {% ifequal "" request.GET.color %} selected {% endifequal %} >None</option>
+                                       <option value="stainless" {% ifequal request.GET.color "stainless" %}selected  {% endifequal %} >Stainless</option>
+                                       <option value="black" {% ifequal request.GET.color "black" %}selected  {% endifequal %} >Black</option>
+                                       <option value="white" {% ifequal request.GET.color "white" %}selected  {% endifequal %} >White</option>
+                                       <option value="beige" {% ifequal request.GET.color "beige" %}selected  {% endifequal %} >Beige</option>
+                                   </select>
+
+                            <input type="submit" style="display:none"/>
+                        </form></li>
+                        {% endif %}
+                        <li ><a href="{% url 'logout' %}">Logout</a></li>
+
+                        {% else %}
+                        <li ><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End mainmenu area -->
+    </nav>

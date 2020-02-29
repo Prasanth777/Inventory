@@ -1,0 +1,74 @@
+{% load static %}
+{% static "Image" as baseUrl %}
+<div class="container" style="margin-top:20px;width:100%;height:100%;">
+    <div class="row" >
+    {% if user.is_admin is False%}
+    {% for i in Inventory_Images%}
+    <div class="col-md-3 col-xs-6" style="width:350px;float:left;display:inline;">
+        <div class="single-shop-product">
+
+               <div class="product-upper" ><a href="{{i.image.url}}"><center><img src="{{i.image.url}}" alt="Not Found" style="max-width:350px ;max-height:180px ;"></center></a> </div>
+                <div class="product-carousel-price" style="display: inline-block;text-color:black; ">
+               <h5>Brand:{{i.brand}}</h5><h5 > &emsp;&emsp;&emsp;&emsp;Price:${{i.price}}</h5></div>
+                {% if i.owner.id == user.id %}
+                <form method = "post" action="{% url 'delete_invent' i.id %}">
+                    {% csrf_token %}
+                    <div class="single-shop-product"><button type="submit" class="add_to_cart_button" onclick="return confirm('Are you sure?');" style="background-color:darkred;width:100%;">Mark as Sold</button> </div>
+                </form>
+                {% endif %}
+
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    {% for i in Inventory_Images%}
+    <div class="col-md-3 col-xs-6" style="width:350px;float:left;display:inline;">
+        <div class="single-shop-product">
+
+               <div class="product-upper" ><a href="{% url 'gallery_details_with_pk' user.id i.id %}"><center><img src="{{i.image.url}}" alt="Not Found" style="max-width:350px ;max-height:180px ;"></center></a> </div>
+               <div class="product-carousel-price" style="display: inline-block;text-color:black; ">
+                   <h5>Brand:{{i.brand}}</h5><h5 style="float:right;"> Price:${{i.price}}</h5>
+                   <form action="{% url 'class_change' i.id%}" method="post" name="colorchange">
+                       {% csrf_token %}
+                       <h5><label for="category">Class: </label>
+                           <select id="category" name="category"  onChange="form.submit();" >
+                               <option value="" {% if i.category is None %}selected disable hidden {% endif %}  >None</option>
+                               <option value="3door" {% ifequal i.category "3door" %} selected  {% endifequal %}   >3-Door</option>
+                               <option value="4door" {% ifequal i.category "4door" %} selected  {% endifequal %}   >4-Door</option>
+                               <option value="topmount" {% ifequal i.category "topmount" %} selected  {% endifequal %}   >Top Mount</option>
+                               <option value="bottomfreezer" {% ifequal i.category "bottomfreezer" %} selected  {% endifequal %}   >Bottom Freezer</option>
+                               <option value="gasstove" {% ifequal i.category "gasstove" %} selected  {% endifequal %}   >Gas Stove</option>
+                               <option value="electricstove" {% ifequal i.category "electricstove" %} selected  {% endifequal %}   >Electric Stove</option>
+                               <option value="basicdryer" {% ifequal i.category "basicdryer" %} selected  {% endifequal %}   >Basic Dryer</option>
+                               <option value="fldryer" {% ifequal i.category "fldryer" %} selected  {% endifequal %}   >FL Dryer</option>
+                               <option value="tlwasher" {% ifequal i.category "tlwasher" %} selected  {% endifequal %}   >TL Washer</option>
+                               <option value="flwasher" {% ifequal i.category "flwasher" %} selected  {% endifequal %}   >FL Washer</option>
+                               <option value="Sets" {% ifequal i.category "sets" %} selected  {% endifequal %}   >Sets</option>
+                               <option value="freezer" {% ifequal i.category "freezer" %} selected  {% endifequal %}   >Freezer</option>
+                               <option value='quaddoor' {% ifequal i.category "quaddoor" %} selected  {% endifequal %} >Quad Door</option>
+                           </select>
+                       </h5>
+                       <h5><label for="color">Color: </label>
+                           <select id="color" name="color" onChange="form.submit();">
+                               <option value="" {% if i.color is None %}selected disable hidden {% endif %}>None</option>
+                               <option value="stainless" {% ifequal i.color "stainless" %}selected  {% endifequal %} >Stainless</option>
+                               <option value="black" {% ifequal i.color "black" %}selected  {% endifequal %} >Black</option>
+                               <option value="white" {% ifequal i.color "white" %}selected  {% endifequal %} >White</option>
+                               <option value="beige" {% ifequal i.color "beige" %}selected  {% endifequal %} >Beige</option>
+                           </select>
+                       </h5>
+                       <input type="submit" style="display:none"/>
+               </form>
+               </div>
+               <form method = "post" action="{% url 'delete_invent' i.id %}">
+                   {% csrf_token %}
+                   <center><div class="single-shop-product" style="width:100%;"><button type="submit" class="add_to_cart_button" onclick="return confirm('Marking as sold will remove the item. Do you want to continue?');" style="background-color:darkred;width:100%;">Mark as Sold</button> </div></center>
+               </form>
+                <h5>Listed by:{{i.owner.companyname}}</h5>
+
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    </div>
+</div>

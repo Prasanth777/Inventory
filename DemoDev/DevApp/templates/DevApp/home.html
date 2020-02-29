@@ -1,0 +1,8 @@
+{% include 'DevApp/header.html'%}
+{% include 'DevApp/homenav.html'%}
+{% if user.is_authenticated%}
+{% include 'DevApp/gallerycontent.html' %}
+{% else %}
+{% include 'DevApp/login.html'%}
+{% endif %}
+{% include 'DevApp/footer.html'%}
