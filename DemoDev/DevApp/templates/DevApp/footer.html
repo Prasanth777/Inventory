@@ -1,13 +1,15 @@
 {% load static%}
-<footer class="pagefooter">
+{% if user.is_authenticated %}
+<div class="fixed-btn" style="position:fixed;width:50px;height:50px;line-height:50px;bottom:5%;right:50%;cursor:pointer">
+    <p><a href="{% url 'upload' %}"> <img src=" {% static 'Image/vippng.com-google-plus-png-71830.png' %}" class="img-circle" alt="Smiley face" height="50" width="50"></a></p>
+</div>
+{% else %}
+<footer class="pagefooter" style="position: absolute;">
         <center>
-        {% if user.is_authenticated %}
-        <p class="designcredit"><a href="{% url 'upload' %}"> <img src=" {% static 'Image/vippng.com-google-plus-png-71830.png' %}" alt="Smiley face" height="50" width="50"></a></p>
-        {% else %}
         <p class="sitecredit"> 2020 @ All Rights Reserved | </p>
         <p class="designcredit">Inventory Manager</p>
-        {% endif %}
         </center>
     </footer>
+{% endif %}
   </body>
 </html>

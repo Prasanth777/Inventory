@@ -1,11 +1,11 @@
 .pagefooter {
-background-color:#1abc9c;
+background-color:black;
 font-family: "Roboto Condensed",sans-serif;
 text-transform: uppercase;
 width: 100%;
 z-index: 999;
 clear:both;
-position: absolute;
+position: fixed;
 left: 0;
 bottom: 0;
 height: 70px;
@@ -13,12 +13,14 @@ overflow: hidden;
 float:left;
 }
 html{
+background-color:white;
 min-height:100%;
 position:relative;
 }
 
 body{
 margin: 0 0 100px;
+background-color:white;
     /* bottom = footer height */
 }
 .something{
@@ -246,9 +248,9 @@ width: 50px;
     text-align: center;
 }
 
-.mainmenu-area {background: none repeat scroll 0 0 #1abc9c;
-font-family: "Roboto Condensed",sans-serif;
-text-transform: uppercase;
+.mainmenu-area {background: none repeat scroll 0 0 #ffffff;
+
+text-transform: none;
 width: 100%;
 z-index: 999;}
 
@@ -315,14 +317,40 @@ z-index: 999;}
 
 
 .mainmenu-area ul.navbar-nav li a {
-    color: #fff;
-    font-size: 16px;
+    color: black;
+    font-size: 14px;
     font-weight: 700;
     padding: 20px;
+    padding-left:0px;
+    padding-right:12px;
+    text-align:center;
 }
 
-.mainmenu-area ul.navbar-nav li:hover a, .mainmenu-area ul.navbar-nav li.active a {background: #222}
-.mainmenu-area .nav > li > a:focus {color: #000}
+.mainmenu-area ul.navbar-nav li.dropdown select {
+    background:#7755ff;
+    color: white;
+   margin:0px 6px 6px 0px;
+   padding:20px ;
+   padding-left:10px
+   border-radius:3px;
+   position:relative;
+   text-align-last:left;
+    padding: 20px;
+    }
+.mainmenu-area ul.navbar-nav li.dropdown select option{
+  background:#7755ff;
+   margin:0px 6px 6px 0px;
+   font-size: 14px;
+
+
+
+}
+
+
+
+
+
+
 
 .zigzag-bottom {
 background: none repeat scroll 0 0 #1abc9c;
@@ -1150,42 +1178,3 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     margin-bottom: 15px;
 }
 
-.select {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  font-size: 16px;
-  color: $select-color;
-  width: $select-width;
-  height: $select-height;
-}
-
-
-.single-shop-product h2 {
-    font-size: 20px;
-    margin: 10px 0;
-}
-.product-option-shop {
-    margin-top: 15px;
-}
-
-.single-shop-product {
-margin-bottom: 10px;
-
-}
-
-.pagination > li > a, .pagination > li > span {
-  color: #1abc9c;
-}
-
-.site-branding-area {
-background-color:#242424;
-}
-
-.destination_item {
-margin:0;
-float:left;
-inline-block;
-background-color:red;
-
-}

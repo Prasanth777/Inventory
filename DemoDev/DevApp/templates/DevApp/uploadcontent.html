@@ -2,7 +2,7 @@
     <div class="login1">
         <h1><strong>Upload</strong></h1>
         <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
-            <fieldset>
+            <fieldset style="float:center">
             {% csrf_token %}
             {{ form.as_p }}
 

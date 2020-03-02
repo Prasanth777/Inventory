@@ -1,6 +1,6 @@
     <nav>
-    <div class="mainmenu-area">
-        <div class="container">
+    <div class="mainmenu-area" >
+        <div class="container" style="padding-top:45px;padding-left:0px;margin-left:45px;margin-right:150px;padding-right:0px;width:91%">
             <div class="row">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -10,26 +10,27 @@
                     </button>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+
                         {% if user.is_authenticated %}
                         {% if user.is_admin is False %}
-                        <li ><a href="{% url 'gallery_with_pk' user.id %}">Gallery</a></li>
-                        
+                        <ul class="nav navbar-nav navbar-right">
+                        <li ><a href="{% url 'gallery_with_pk' user.id %}">&emsp;Gallery</a></li>
+                        <li ><a href="{% url 'logout' %}">&emsp;Logout</a></li>
+                        </ul>
                         {% else %}
-                        <li ><a href="{% url 'gallery_admin_with_pk' user.id %}">Gallery</a></li>
-
-                        <li ><form action="{% url 'gallery_admin_filter' %}" method="get" name="colorchange" >
+                        <ul class="nav navbar-nav">
+                        <li class="dropdown"><form action="{% url 'gallery_admin_filter' %}" method="get" name="colorchange" >
                             {% csrf_token %}
-                                   <select id="company" name="company" style="border:None;color: #fff;background-color: #1abc9c;font-size: 16px;font-weight: 700;padding: 20px;" onChange="form.submit();">
-                                       <option value="" disable hidden  >CompanyName</option>
+                                   <select id="company" name="company"  onChange="form.submit();">
+                                       <option value="" disable hidden style="text-align:left" ><b>Company Name</b></option>
                                        <option value="" {% ifequal "" request.GET.company %} selected {% endifequal %} >None </option>
                                        {% for a in Accounts%}
                                        <option value="{{a.companyname}}" {% ifequal a.companyname request.GET.company %} selected {% endifequal %} >{{a.companyname}}</option>
                                        {% endfor %}
 
                                    </select>
-                                   <select id="category" name="category" style="border:None;color: #fff;background-color: #1abc9c;font-size: 16px;font-weight: 700;padding: 20px;" onChange="form.submit();" >
-                                       <option value=""  disable hidden  >Class</option>
+                                   <select id="category" name="category"  onChange="form.submit();" >
+                                       <option value=""  disable hidden  ><b>Class</b></option>
                                        <option value=""  {% ifequal "" request.GET.category %} selected {% endifequal %}  >None</option>
                                        <option value="3door" {% ifequal request.GET.category "3door" %} selected  {% endifequal %}   >3-Door</option>
                                        <option value="4door" {% ifequal request.GET.category "4door" %} selected  {% endifequal %}   >4-Door</option>
@@ -45,8 +46,8 @@
                                        <option value="freezer" {% ifequal request.GET.category "freezer" %} selected  {% endifequal %}   >Freezer</option>
                                        <option value='quaddoor' {% ifequal request.GET.category "quaddoor" %} selected  {% endifequal %} >Quad Door</option>
                                    </select>
-                                   <select id="color" name="color" style="border:None;color: #fff;background-color: #1abc9c;font-size: 16px;font-weight: 700;padding: 20px;" onChange="form.submit();">
-                                       <option value=""  disable hidden  >Color</option>
+                                   <select id="color" name="color"  onChange="form.submit();">
+                                       <option value=""  disable hidden  ><b>Color</b></option>
                                        <option value="" {% ifequal "" request.GET.color %} selected {% endifequal %} >None</option>
                                        <option value="stainless" {% ifequal request.GET.color "stainless" %}selected  {% endifequal %} >Stainless</option>
                                        <option value="black" {% ifequal request.GET.color "black" %}selected  {% endifequal %} >Black</option>
@@ -56,14 +57,21 @@
 
                             <input type="submit" style="display:none"/>
                         </form></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" >
+                        <li ><a href="{% url 'gallery_admin_with_pk' user.id %}"></span>&emsp;Gallery</a></li>
+                        <li ><a href="{% url 'logout' %}">&emsp;Logout</a></li>
+                        </ul>
                         {% endif %}
-                        <li ><a href="{% url 'logout' %}">Logout</a></li>
+
 
                         {% else %}
-                        <li ><a href="{% url 'login' %}">Login</a></li>
-                        <li><a href="{% url 'register' %}">Register</a></li>
+                        <ul class="nav navbar-nav navbar-right">
+                        <li ><a href="{% url 'login' %}">&emsp;Login</a></li>
+                        <li><a href="{% url 'register' %}">&emsp;Sign Up</a></li>
+                        </ul>
                         {% endif %}
-                    </ul>
+
                 </div>
             </div>
         </div>
