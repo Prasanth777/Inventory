@@ -1,6 +1,6 @@
 .pagefooter {
 background-color:black;
-font-family: "Roboto Condensed",sans-serif;
+
 text-transform: uppercase;
 width: 100%;
 z-index: 999;
@@ -63,7 +63,7 @@ padding:10px;
 .sidebar {
 float:left;
 background: #fff;
-font-family: "Roboto Condensed",sans-serif;
+
 text-transform: uppercase;
 width: 25%;
 height:80%;
@@ -147,7 +147,7 @@ h6 {
     font-weight: 700;
     margin: 0 0 15px;
 }
-body { font-family: 'Titillium Web', sans-serif; }
+
 
 #login {
 margin: 0px ;
@@ -162,7 +162,7 @@ border-radius: 3px;
 -moz-border-radius: 3px;
 -webkit-border-radius: 3px;
 color: #000000;
-font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+
 font-size: 14px;
 height: 50px;
 outline: none;
@@ -178,7 +178,7 @@ border-radius: 3px;
 -webkit-border-radius: 3px;
 color: #f4f4f4;
 cursor: pointer;
-font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+
 height: 50px;
 text-transform: uppercase;
 width: 300px;
@@ -317,12 +317,13 @@ z-index: 999;}
 
 
 .mainmenu-area ul.navbar-nav li a {
+
     color: black;
     font-size: 14px;
     font-weight: 700;
     padding: 20px;
     padding-left:0px;
-    padding-right:12px;
+    padding-right:15px;
     text-align:center;
 }
 
@@ -444,7 +445,6 @@ z-index: 9;
 .single-promo:hover {color: #fff;background: #222;border-color: #222}
 
 .section-title {
-  font-family: "Raleway",sans-serif;
   font-size: 50px;
   font-weight: 100;
   margin-bottom: 50px;
@@ -562,7 +562,7 @@ z-index: 9;
 .maincontent-area {padding-bottom: 170px}
 
 .product-wid-title {
-  font-family: raleway;
+
   font-size: 30px;
   font-weight: 100;
   margin-bottom: 40px;
@@ -627,7 +627,7 @@ padding: 35px 0 180px;}
   color: #1abc9c;
 }
 .footer-wid-title {
-  font-family: raleway;
+
   font-size: 30px;
   font-weight: 100;color: #fff
 }
@@ -753,7 +753,7 @@ width: 10px;
 .product-big-title-area {background: url(img/crossword.png) repeat scroll 0 0 #1ABC9C}
 
 .product-bit-title h2 {
-  font-family: raleway;
+
   font-size: 50px;
   font-weight: 200;
   margin: 0;
