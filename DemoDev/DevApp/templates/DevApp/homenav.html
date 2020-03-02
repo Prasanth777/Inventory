@@ -14,8 +14,8 @@
                         {% if user.is_authenticated %}
                         {% if user.is_admin is False %}
                         <ul class="nav navbar-nav navbar-right">
-                        <li ><a href="{% url 'gallery_with_pk' user.id %}" >&emsp;Gallery</a></li>
-                        <li ><a href="{% url 'logout' %}">&emsp;Logout</a></li>
+                        <li ><a href="{% url 'gallery_with_pk' user.id %}" style="color: black;font-size: 14px;font-weight: 700;padding: 20px;padding-left:0px;padding-right:15px;text-align:center;">&emsp;Gallery</a></li>
+                        <li ><a href="{% url 'logout' %}" style="color: black;font-size: 14px;font-weight: 700;padding: 20px;padding-left:0px;padding-right:15px;text-align:center;">&emsp;Logout</a></li>
                         </ul>
                         {% else %}
                         <ul class="nav navbar-nav">
@@ -59,16 +59,16 @@
                         </form></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right" >
-                        <li ><a href="{% url 'gallery_admin_with_pk' user.id %}"></span>&emsp;Gallery</a></li>
-                        <li ><a href="{% url 'logout' %}">&emsp;Logout</a></li>
+                        <li ><a href="{% url 'gallery_admin_with_pk' user.id %}" style="color: black;font-size: 14px;font-weight: 700;padding: 20px;padding-left:0px;padding-right:15px;text-align:center;"></span>&emsp;Gallery</a></li>
+                        <li ><a href="{% url 'logout' %}" style="color: black;font-size: 14px;font-weight: 700;padding: 20px;padding-left:0px;padding-right:15px;text-align:center;">&emsp;Logout</a></li>
                         </ul>
                         {% endif %}
 
 
                         {% else %}
                         <ul class="nav navbar-nav navbar-right">
-                        <li ><a href="{% url 'login' %}">&emsp;Login</a></li>
-                        <li><a href="{% url 'register' %}">&emsp;Sign Up</a></li>
+                        <li ><a href="{% url 'login' %}" style="color: black;font-size: 14px;font-weight: 700;padding: 20px;padding-left:0px;padding-right:15px;text-align:center;">&emsp;Login</a></li>
+                        <li><a href="{% url 'register' %}" style="color: black;font-size: 14px;font-weight: 700;padding: 20px;padding-left:0px;padding-right:15px;text-align:center;">&emsp;Sign Up</a></li>
                         </ul>
                         {% endif %}
 
