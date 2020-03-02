@@ -1,7 +1,7 @@
     <nav>
     <div class="mainmenu-area" style="background-color:white;">
         <div class="container" style="color:black;padding-top:45px;padding-left:0px;margin-left:45px;margin-right:150px;padding-right:0px;width:91%">
-            <div class="row">
+            <div class="navbar navbar-default" style="border:none;background:white;">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -9,7 +9,7 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="navbar-collapse collapse">
+                <div class="navbar-collapse collapse" style="padding-left:0px;">
 
                         {% if user.is_authenticated %}
                         {% if user.is_admin is False %}
