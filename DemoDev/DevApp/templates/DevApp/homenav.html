@@ -3,13 +3,13 @@
         <div class="container" style="color:black;padding-top:45px;padding-left:0px;margin-left:45px;margin-right:150px;padding-right:0px;width:91%">
             <div class="navbar navbar-default" style="border:none;background:white;">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#demo">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="navbar-collapse collapse" style="padding-left:0px;">
+                <div class="collapse navbar-collapse " style="padding-left:0px;" id="demo">
 
                         {% if user.is_authenticated %}
                         {% if user.is_admin is False %}
@@ -18,7 +18,7 @@
                         <li ><a href="{% url 'logout' %}" style="color: black;font-size: 14px;font-weight: 700;padding: 20px;padding-left:0px;padding-right:15px;text-align:center;">&emsp;Logout</a></li>
                         </ul>
                         {% else %}
-                        <ul class="nav navbar-nav">
+                        <ul class="nav navbar-nav mr-auto">
                         <li class="dropdown" ><form action="{% url 'gallery_admin_filter' %}" method="get" name="colorchange" >
                             {% csrf_token %}
                                    <select id="company" name="company"  onChange="form.submit();" style=" background:#7755ff;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10pxborder-radius:3px;position:relative;text-align-last:left;padding: 20px;">
