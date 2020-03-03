@@ -9,8 +9,8 @@
 
                <div id="myCarousel" class="carousel slide" data-ride="carousel" style="">
                    <a href="{{i.image.url}}"><center><img src="{{i.image.url}}" alt="Not Found" class="img" style=""></center></a> </div>
-                <div class="panel-body" style="display: inline-block;text-color:black;;margin-left:0px;padding-left:0px;padding-right:0px;padding-bottom:0px">
-               <p style="float:left;margin-left:0px;">Brand: {{i.brand}}</p><p style="float:right;margin-right:0px"> &emsp;   Price: ${{i.price}}</p></div>
+                <div class="panel-body" style="">
+               <p style="float:left;margin-left:0px;padding-left:0px">Brand: {{i.brand}}</p><p style="float:right;margin-right:0px;padding-right:0px;margin-left:10px"> Price: ${{i.price}}</p></div>
                 {% if i.owner.id == user.id %}
                 <form method = "post" action="{% url 'delete_invent' i.id %}">
                     {% csrf_token %}
