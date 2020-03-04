@@ -1193,21 +1193,22 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 height:100%;
 background:#ffffff;
 width: 100%;
-    margin-left: 0%;
+margin-left: 0%;
 }
 .container .row .col-md-3{
-margin-left:0px;margin-top:10px;margin-bottom:50px;margin-right:0px;width:49%;height:433px;float:left;display:inline;padding-right:0px;
-}
-.panel-body{
-display: inline-block;text-color:black;;margin-left:0px;padding-left:0px;padding-right:0px;padding-bottom:0px
+margin-left:0px;margin-top:10px;margin-bottom:50px;margin-right:0px;width:48%;height:433px;float:left;display:inline;padding-right:0px;
 }
 .container .row .col-md-3 .panel{
 width:100%;background-color:#ffffff;border:none;margin:0px;height:100%;
 }
+.container .row .col-md-3 .panel .panel-body{
+display: inline-block;text-color:black;;margin-left:0px;padding-left:0px;padding-right:0px;padding-bottom:0px
+}
+
 .container .row .col-md-3 .panel .carousel{}
 width:100%;height:100%;
 }
-.container .row .col-md-3 .panel .carousel a .img {
+.container .row .col-md-3 .panel .carousel .img {
 display: block;width:100%;height:259px;
 }
 
