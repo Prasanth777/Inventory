@@ -75,7 +75,7 @@ class Inventory(models.Model):
     image = models.FileField(upload_to='Image/',null=True)
     category = models.CharField(max_length=50,null=True,blank=True,default=None)
     color = models.CharField(max_length=50,null=True,blank=True,default=None)
-    price = models.IntegerField(null=False,blank=False)
+    price = models.CharField(max_length=50,null=True,blank=True,default=None)
     owner= models.ForeignKey(Account,on_delete=models.CASCADE)
 
     def delete(self, *args,**kwargs):

@@ -10,7 +10,7 @@
                <div id="myCarousel" class="carousel slide" data-ride="carousel" style="">
                    <a href="{{i.image.url}}"><center><img src="{{i.image.url}}" alt="Not Found" class="img" style=""></center></a> </div>
                 <div class="panel-body" style="">
-               <p style="float:left;margin-left:0px;padding-left:0px">Brand: {{i.brand}}</p><p style="float:right;margin-right:0px;padding-right:0px;margin-left:10px"> Price: ${{i.price}}</p></div>
+               <p style="float:left;margin-left:0px;padding-left:0px">{{i.brand}}</p><p style="float:right;margin-right:0px;padding-right:0px;margin-left:10px"> Price: ${{i.price}}</p></div>
                 {% if i.owner.id == user.id %}
                 <form method = "post" action="{% url 'delete_invent' i.id %}">
                     {% csrf_token %}
@@ -31,7 +31,7 @@
                </div>
 
                <div class="panel-body" style="display: inline-block;text-color:black;padding-bottom:0px;padding-left:0px;padding-right:0px ">
-                   <p style="float:left;margin-left:0px;padding-left:5px">Brand: {{i.brand}}</p><p style="float:right;margin-right:0px;"> Price: ${{i.price}}</p>
+                   <p style="float:left;margin-left:0px;padding-left:0px">{{i.brand}}</p><p style="float:right;margin-right:0px;"> Price: ${{i.price}}</p>
                    <form action="{% url 'class_change' i.id%}" method="post" name="colorchange">
                        {% csrf_token %}
                        <p style="" id="category"><label for="category"> </label>
