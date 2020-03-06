@@ -1,6 +1,6 @@
     <nav>
     <div class="mainmenu-area" style="background-color:white;">
-        <div class="container" style="color:black;padding-top:15px;padding-left:0px;margin-left:45px;margin-right:150px;padding-right:0px;width:91%">
+        <div class="container" style="">
             <div class="navbar navbar-default" style="border:none;background:white;">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#demo">
@@ -13,7 +13,7 @@
 
                         {% if user.is_authenticated %}
                         {% if user.is_admin is False %}
-                        <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav navbar-right" style="text-align:center;">
                         <li ><a href="{% url 'gallery_with_pk' user.id %}" style="color: black;font-size: 14px;font-weight: 700;padding: 20px;padding-left:0px;padding-right:15px;text-align:center;">&emsp;Gallery</a></li>
                         <li ><a href="{% url 'logout' %}" style="color: black;font-size: 14px;font-weight: 700;padding: 20px;padding-left:0px;padding-right:15px;text-align:center;">&emsp;Logout</a></li>
                         </ul>
@@ -21,15 +21,15 @@
                         <ul class="nav navbar-nav mr-auto">
                         <li class="dropdown" ><form action="{% url 'gallery_admin_filter' %}" method="get" name="colorchange" >
                             {% csrf_token %}
-                                   <select id="company" name="company"  onChange="form.submit();" style=" background:#7755ff;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10pxborder-radius:3px;position:relative;text-align-last:left;padding: 20px;">
-                                       <option value="" disable hidden style="text-align:left" ><b>Company Name</b></option>
+                                   <select id="comp" name="company"  onChange="form.submit();" style="  ">
+                                       <option value="" disable hidden style="text-align:left" ><b>Company</b></option>
                                        <option value="" {% ifequal "" request.GET.company %} selected {% endifequal %} >None </option>
                                        {% for a in Accounts%}
                                        <option value="{{a.companyname}}" {% ifequal a.companyname request.GET.company %} selected {% endifequal %} >{{a.companyname}}</option>
                                        {% endfor %}
 
                                    </select>
-                                   <select id="category" name="category"  onChange="form.submit();" style=" background:#7755ff;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10pxborder-radius:3px;position:relative;text-align-last:left;padding: 20px;">
+                                   <select id="cat" name="category"  onChange="form.submit();" style=" ">
                                        <option value=""  disable hidden  ><b>Class</b></option>
                                        <option value=""  {% ifequal "" request.GET.category %} selected {% endifequal %}  >None</option>
                                        <option value="3door" {% ifequal request.GET.category "3door" %} selected  {% endifequal %}   >3-Door</option>
@@ -46,7 +46,7 @@
                                        <option value="freezer" {% ifequal request.GET.category "freezer" %} selected  {% endifequal %}   >Freezer</option>
                                        <option value='quaddoor' {% ifequal request.GET.category "quaddoor" %} selected  {% endifequal %} >Quad Door</option>
                                    </select>
-                                   <select id="color" name="color"  onChange="form.submit();" style=" background:#7755ff;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10pxborder-radius:3px;position:relative;text-align-last:left;padding: 20px;">
+                                   <select id="colo" name="color"  onChange="form.submit();" style="">
                                        <option value=""  disable hidden  ><b>Color</b></option>
                                        <option value="" {% ifequal "" request.GET.color %} selected {% endifequal %} >None</option>
                                        <option value="stainless" {% ifequal request.GET.color "stainless" %}selected  {% endifequal %} >Stainless</option>
