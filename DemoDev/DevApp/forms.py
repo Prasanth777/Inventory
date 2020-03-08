@@ -1,8 +1,10 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Inventory,Images
+from .models import Inventory
 class InventoryForm(ModelForm):
-    image = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    image = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True,'class' : 'upload'}))
+
+
     class Meta:
         model=Inventory
         fields=[
@@ -10,12 +12,4 @@ class InventoryForm(ModelForm):
             "brand",
             "price",
 
-        ]
-
-class ImagesForm(ModelForm):
-    image = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
-    class Meta:
-        model=Images
-        fields=[
-            "image",
         ]

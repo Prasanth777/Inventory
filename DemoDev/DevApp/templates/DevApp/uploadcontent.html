@@ -1,8 +1,8 @@
 <center>
-    <div class="login1">
+    <div class="container" style=" width:400px;height:274px;">
         <h1><strong>Upload</strong></h1>
         <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
-            <fieldset style="float:center">
+            <fieldset >
             {% csrf_token %}
             {{ form.as_p }}
 

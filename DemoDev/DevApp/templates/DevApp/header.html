@@ -16,11 +16,36 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     {% load static %}
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" >
+
+    <script type="text/javascript">
+      function yHandler() {
+      var wrap = $('html').scrollTop();
+      localStorage.setItem('wrap', $(window).scrollTop());
+
+
+
+      }
+      function reloadloc() {
+      var pos = localStorage.getItem('wrap');
+      console.log(pos);
+      if (pos)
+        $(window).scrollTop(pos)
+
+      }
+      window.onload = function() {
+        reloadloc();
+        localStorage.removeItem('wrap');
+      }
+
+    </script>
+
   </head>
   <body>
     <header>

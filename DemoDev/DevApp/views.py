@@ -3,7 +3,7 @@ from django.contrib.auth.models import auth
 from .models import Account, Inventory, Images
 from django.http import HttpResponse
 from django.contrib import messages
-from .forms import InventoryForm,ImagesForm
+from .forms import InventoryForm
 from django.forms import modelformset_factory
 import os.path
 from django.core.files.base import ContentFile
