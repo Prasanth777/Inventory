@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import auth
-from .models import Account, Inventory, Images
+from .models import Account, Inventory, Images , Orders, Order_Image,Flip_Image,Flips
 from django.http import HttpResponse
 from django.contrib import messages
-from .forms import InventoryForm
+from .forms import InventoryForm,FlipForm,OrderForm
 from django.forms import modelformset_factory
 import os.path
 from django.core.files.base import ContentFile
@@ -70,6 +70,23 @@ def gallery_admin(request,id=None):
     else:
         return redirect('login')
 
+def orders_admin(request,id=None):
+    if request.user.is_authenticated:
+        if request.method == 'GET':
+            #Images_dict={}
+            #User = get_object_or_404(Account,id=id)
+            Order = Orders.objects.all()
+            Accounts = Account.objects.all()
+            Order_Images = Order_Image.objects.all()
+            Flip_Images = Flip_Image.objects.all()
+            Flip = Flips.objects.all()
+            #for item in Inventorys:
+                #Images_dict[item] = Images.objects.filter(inv_id=item.id)
+            #Images_dict = Images.objects.filter(inv__id=Inventorys.id)
+            return render(request,'DevApp/orders.html',{'Inventory_Images':Order,'Accounts':Accounts,'Order_Images':Order_Images,'Flip_Images':Flip_Images,'Flips':Flip})
+    else:
+        return redirect('login')
+
 def gallery_filter(request):
     if request.method == 'GET':
         Inventorys = None
@@ -130,9 +147,25 @@ def gallery_filter(request):
             print(color)
             Inventorys = Inventory.objects.filter(color=color)
 
-
-
         return render(request, 'DevApp/gallery.html', {'Inventory_Images': Inventorys, 'Accounts': Accounts})
+
+def order_filter(request):
+
+    if request.method == 'GET':
+        if request.GET['company']:
+            Accounts = Account.objects.all()
+            company = request.GET['company']
+            print(company)
+            Order = Orders.objects.filter(client=company)
+            Flip_Images = Flip_Image.objects.all()
+            Flip = Flips.objects.all()
+        else:
+            Order = Orders.objects.all()
+            Accounts = Account.objects.all()
+            Flip_Images = Flip_Image.objects.all()
+            Flip = Flips.objects.all()
+        return render(request, 'DevApp/orders.html', {'Inventory_Images': Order, 'Accounts': Accounts,'Flip_Images':Flip_Images,'Flips':Flip})
+
 
 def gallery(request,id=None):
     if request.user.is_authenticated:
@@ -155,7 +188,7 @@ def gallery_details(request,id1=None,id2=None):
             Images_dict = Images.objects.filter(inv_id=id2)
 
             #Images_dict = Images.objects.filter(inv__id=Inventorys.id)
-            return render(request,'DevApp/details.html',{'Inventory_Images':Images_dict,'Images_d':Images_dict})
+            return render(request,'DevApp/details.html',{'Inventory_Images':Images_dict})
     else:
         return redirect('login')
 
@@ -169,6 +202,15 @@ def thumbnail_change(request,id=None):
         print("Thumbnail changed")
         return redirect('gallery_admin_with_pk',id=request.user.id)
 
+def order_thumbnail_change(request,id=None):
+    if request.method == 'POST':
+        thumb = get_object_or_404(Order_Image,id=id)
+        #copy = ContentFile(thumb.image.read())
+        #new_name = thumb.image.name.split("/")[-1]
+        thumb.ordimg.image.save(thumb.image.name.split("/")[-1],ContentFile(thumb.image.read()))
+        #thumb.inv.image.save()
+        print("Thumbnail changed")
+        return redirect('orders_admin_with_pk',id=request.user.id)
 def delete_inventory(request,id):
     if request.method == 'POST':
         invent = get_object_or_404(Inventory,id=id)
@@ -180,6 +222,106 @@ def delete_inventory(request,id):
             return redirect('gallery_with_pk',id=request.user.id)
         else:
             return redirect('gallery_admin_with_pk', id=request.user.id)
+        delete_orders
+def flip(request,id1,id2):
+    fli = get_object_or_404(Flips, id=id2)
+    order = get_object_or_404(Orders, id=id1)
+    if request.method == 'POST':
+        print("We are inside post flip")
+        try:
+            files = request.FILES.getlist('image')
+            form = FlipForm(request.POST or None, request.FILES or None,instance=fli)
+
+        except Exception as e:
+            print("Exception hit:{}".format(str(e)))
+
+        #print(form['brand'].value())
+        #form2 = ImagesForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            print("form is valid")
+            ordimg = form.save(commit=False)
+            ordimg.flip = order
+            ordimg.flip.ord = request.user
+            ordimg.save()
+            for f in files:
+                try:
+                    inv = Flip_Image(flipimg=ordimg,image=f)
+                    inv.save()
+                    print("Image saved")
+
+                except Exception as e:
+                    print("Exception hit:{}".format(str(e)))
+                    break
+            print("Form saved")
+            if request.user.is_admin is False:
+                return redirect('orders_with_pk', id=request.user.id)
+            else:
+                return redirect('orders_admin_with_pk', id=request.user.id)
+        else:
+            print("form is not valid")
+            print(form.errors)
+    else:
+        form = FlipForm()
+
+    return render(request,'DevApp/flip.html',{'form':form,'order':order,'flip':fli})
+
+def orders(request,id):
+    if request.user.is_authenticated:
+        if request.method == 'GET':
+            # Images_dict={}
+            # User = get_object_or_404(Account,id=id)
+            Accounts = Account.objects.filter(id=id)
+            print(Accounts)
+            for a in Accounts:
+                print(a)
+                an=a
+            Order = Orders.objects.filter(client=an)
+
+            Order_Images = Order_Image.objects.all()
+            Flip = Flips.objects.all()
+            Flip_Images = Flip_Image.objects.all()
+
+            # for item in Inventorys:
+            # Images_dict[item] = Images.objects.filter(inv_id=item.id)
+            # Images_dict = Images.objects.filter(inv__id=Inventorys.id)
+            return render(request, 'DevApp/orders.html',
+                          {'Inventory_Images': Order, 'Accounts': Accounts, 'Order_Images': Order_Images,
+                           'Flip_Images': Flip_Images, 'Flips': Flip})
+    else:
+        return redirect('login')
+def orders_details(request,id1=None,id2=None):
+    if request.user.is_authenticated:
+        if request.method == 'GET':
+            # User = get_object_or_404(Account,id=id)
+            Images_dict = Order_Image.objects.filter(ordimg_id=id2)
+
+            # Images_dict = Images.objects.filter(inv__id=Inventorys.id)
+            return render(request, 'DevApp/orderdetails.html', {'Inventory_Images': Images_dict})
+    else:
+        return redirect('login')
+
+def flip_details(request,id1=None,id2=None):
+    if request.user.is_authenticated:
+        if request.method == 'GET':
+            # User = get_object_or_404(Account,id=id)
+            Images_dict = Flip_Image.objects.filter(flipimg_id=id2)
+
+            # Images_dict = Images.objects.filter(inv__id=Inventorys.id)
+            return render(request, 'DevApp/flipdetails.html', {'Inventory_Images': Images_dict})
+    else:
+        return redirect('login')
+
+def delete_orders(request,id):
+    if request.method == 'POST':
+        invent = get_object_or_404(Orders, id=id)
+        im = Order_Image.objects.filter(ordimg=invent)
+        for i in im:
+            i.delete()
+        invent.delete()
+        if request.user.is_admin is False:
+            return redirect('orders_with_pk', id=request.user.id)
+        else:
+            return redirect('orders_admin_with_pk', id=request.user.id)
 
 def upload_image(request):
     if request.method == 'POST':
@@ -190,10 +332,12 @@ def upload_image(request):
             inv = form.save(commit=False)
             inv.owner = request.user
             inv.save()
+
             for f in files:
                 try:
                     invent = Images(inv=inv,image=f)
                     invent.save()
+
 
                 except Exception as e:
                     break
@@ -237,6 +381,82 @@ def class_change(request,id):
         print("Category or Color changed")
         return redirect('gallery_admin_with_pk', id=request.user.id)
 
+def order_form(request,id):
+    if request.method == "POST":
+        change = get_object_or_404(Orders,id=id)
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        price= request.POST.get('price')
+        delivery = request.POST.get('delivery')
+        time = request.POST.get('time')
+        address = request.POST.get('address')
+
+        print(name)
+        print(phone)
+        print(price)
+        print(delivery)
+        print(time)
+        print(address)
+
+        change.name = name
+        change.phone = phone
+        change.price = price
+        change.delivery = delivery
+        change.time = time
+        change.address = address
+        print(type(change.address))
+
+        change.save()
+        print(request.POST)
+        print("Form saved")
+        return redirect('orders_admin_with_pk', id=request.user.id)
+def order_avail_form(request,id):
+    if request.method == "POST":
+        change = get_object_or_404(Orders, id=id)
+        available = request.POST.get('available')
+        if available == "on":
+            available = True
+        else:
+            available = False
+        print(available)
+        change.available = available
+        change.save()
+        if request.user.is_admin is False:
+            return redirect('orders_with_pk', id=request.user.id)
+        else:
+            return redirect('orders_admin_with_pk', id=request.user.id)
+
+def upload_order(request):
+    if request.method == 'POST':
+        files = request.FILES.getlist('image')
+        form = OrderForm(request.POST or None, request.FILES or None)
+        #form2 = ImagesForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            ordimg = form.save(commit=False)
+            ordimg.ord = request.user
+            ordimg.save()
+            fli = Flips(flip=ordimg)
+            fli.save()
+            for f in files:
+                try:
+                    inv = Order_Image(ordimg=ordimg, image=f)
+                    inv.save()
+                    print("Image saved")
+
+                except Exception as e:
+                    print("Exception hit:{}".format(str(e)))
+                    break
+            print("Form saved")
+            if request.user.is_admin is False:
+                return redirect('orders_with_pk', id=request.user.id)
+            else:
+                return redirect('orders_admin_with_pk', id=request.user.id)
+        else:
+            print("Form is not Valid")
+            print(form.errors)
+    else:
+        form = OrderForm()
 
 
+    return render(request,'DevApp/createorder.html',{'form':form})
 

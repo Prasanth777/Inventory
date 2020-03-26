@@ -1,5 +1,6 @@
 {% load static%}
 {% if user.is_authenticated %}
+
 <div class="fixed-btn" style="">
     <p><a href="{% url 'upload' %}"> <img src=" {% static 'Image/plus-7-512-2.jpg' %}" class="img-circle" alt="Smiley face" height="65" width="65"></a></p>
 </div>
@@ -11,6 +12,7 @@
         </center>
     </footer>
 {% endif %}
+
       <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();

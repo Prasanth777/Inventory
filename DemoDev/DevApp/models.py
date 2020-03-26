@@ -60,7 +60,7 @@ class Account(AbstractBaseUser):
 
     objects = MyAccountManager()
     def __str__(self):
-        return self.email
+        return self.companyname
 
     def has_perm(self,perm,obj=None):
         return self.is_admin
@@ -87,6 +87,61 @@ class Inventory(models.Model):
 
     class Meta:
         ordering = ["-timestamp"]
+
+class Orders(models.Model):
+    ord = models.ForeignKey(Account, on_delete=models.CASCADE)
+    image = models.FileField(upload_to='Image/', null=True)
+    name = models.CharField(max_length=50, null=True, blank=True)
+    phone = models.CharField(max_length=20,null=True,blank=True)
+    price = models.CharField(max_length=10,null=True,blank=True)
+    delivery = models.CharField(max_length=10,null=True,blank=True)
+    time = models.CharField(max_length=10,null=True,blank=True)
+    address= models.CharField(max_length=100,null=True,blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
+    client = models.CharField(max_length=20,null=True,blank=True)
+    available = models.BooleanField(default=False)
+    def delete(self, *args,**kwargs):
+        self.image.delete()
+        super().delete(*args,**kwargs)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["-timestamp"]
+
+class Flips(models.Model):
+    flip = models.ForeignKey(Orders, on_delete=models.CASCADE)
+    image = models.FileField(upload_to='Image/', null=True)
+    brand = models.CharField(max_length=50, null=True, blank=True)
+    def delete(self, *args,**kwargs):
+        self.image.delete()
+        super().delete(*args,**kwargs)
+
+    def __str__(self):
+        return self.flip.name
+
+class Order_Image(models.Model):
+    ordimg = models.ForeignKey(Orders, on_delete=models.CASCADE)
+    image = models.FileField(upload_to='Image/')
+
+    def delete(self, *args, **kwargs):
+        self.image.delete()
+        super().delete(*args, **kwargs)
+
+    def __str__(self):
+        return self.ordimg.name
+
+class Flip_Image(models.Model):
+    flipimg = models.ForeignKey(Flips, on_delete=models.CASCADE)
+    image = models.FileField(upload_to='Image/')
+
+    def delete(self, *args, **kwargs):
+        self.image.delete()
+        super().delete(*args, **kwargs)
+
+    def __str__(self):
+        return self.flipimg.flip.name
 
 class Images(models.Model):
     inv = models.ForeignKey(Inventory,on_delete=models.CASCADE)

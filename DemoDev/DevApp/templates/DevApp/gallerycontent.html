@@ -1,5 +1,17 @@
 {% load static %}
 {% static "Image" as baseUrl %}
+<script>
+    $("form").on('submit', function (e) {
+   //prevent form submission / page refresh
+   e.preventDefault();
+    console.log('form submitted');
+   //submit form with ajax
+   $.get(window.location, $(this).serialize());
+});
+$("form select").on('change', function () {
+   $("form").trigger('submit');
+});
+</script>
 <div class="container" >
     <div class="row" >
     {% if user.is_admin is False%}
@@ -7,7 +19,7 @@
     <div class="col-md-3 col" >
         <div class="panel panel-default text-center" >
 
-               <div id="myCarousel" class="carousel slide" data-ride="carousel" style="">
+               <div id="myCarousel1" class="carousel slide" data-ride="carousel" style="">
                    <a href="{{i.image.url}}"><center><img src="{{i.image.url}}" alt="Not Found" class="img" style=""></center></a> </div>
                 <div class="panel-body" style="">
                <p style="float:left;margin-left:0px;padding-left:0px">{{i.brand}}</p><p style="float:right;margin-right:0px;padding-right:0px;margin-left:10px"> Price: ${{i.price}}</p></div>
@@ -31,11 +43,11 @@
                </div>
 
                <div class="panel-body" style="display: inline-block;text-color:black;padding-bottom:0px;padding-left:0px;padding-right:0px ">
-                   <p style="float:left;margin-left:0px;padding-left:0px">{{i.brand}}</p><p style="float:right;margin-right:0px;"> Price: ${{i.price}}</p>
-                   <form action="{% url 'class_change' i.id%}" method="post" name="colorchange">
+                   <p style="float:left;margin-left:3px;padding-left:0px">{{i.brand}}</p><p style="float:right;margin-right:0px;"> Price: ${{i.price}}</p>
+                   <form action="{% url 'class_change' i.id%}" method="post" name="colorchange" onsubmit="yHandler()">
                        {% csrf_token %}
                        <p style="" id="category"><label for="category"> </label>
-                           <select id="category" name="category"  onChange="form.submit();" >
+                           <select  id="category1" name="category"  onChange="form.submit();" >
                                <option value="" {% if i.category is None %}selected disable hidden {% endif %}  >Class</option>
                                <option value="3door" {% ifequal i.category "3door" %} selected  {% endifequal %}   >3-Door</option>
                                <option value="4door" {% ifequal i.category "4door" %} selected  {% endifequal %}   >4-Door</option>
@@ -53,7 +65,7 @@
                            </select>
                        </p>
                        <p style="" id="color"><label for="color"> </label>
-                           <select id="color" name="color" onChange="form.submit();">
+                           <select  name="color" id="color1" onChange="form.submit();">
                                <option value="" {% if i.color is None %}selected disable hidden {% endif %}>Color</option>
                                <option value="stainless" {% ifequal i.color "stainless" %}selected  {% endifequal %} >Stainless</option>
                                <option value="black" {% ifequal i.color "black" %}selected  {% endifequal %} >Black</option>

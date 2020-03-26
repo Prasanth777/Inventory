@@ -1,0 +1,44 @@
+<div class="container" style=" " id="cont">
+        <h1 style="margin-left:33%"><strong>Order</strong></h1>
+        <form action="{% url 'upload_order' %}" method="post" enctype="multipart/form-data">
+            <fieldset >
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="fieldWrapper">
+            {{ field.label_tag }}: {{ field }}
+
+            </div>
+                {% ifequal field.name "image" %}
+                <div class="image-preview" id="image-preview" >
+
+                </div>
+            {% endifequal%}
+            {% endfor %}
+            <script>
+                const id_image = document.getElementById("id_image");
+                const previewContainer = document.getElementById("image-preview");
+                const previewImage = document.querySelector(".image-preview__image");
+
+                id_image.addEventListener("change",function() {
+                    for (var i = 0; i < this.files.length; i++) {
+                        console.log(this.files[i]);
+                        if(this.files[i]) {
+                        var fr = new FileReader();
+                        fr.onload = function(e) {
+                          $('#image-preview').append('<img class ="image-preview__image" src="' + e.target.result + '" >')
+                        }
+                        fr.readAsDataURL(this.files[i]);
+                        }
+                        else {
+                        previewImage.style.display= null;
+                        }
+                        }
+
+                });
+            </script>
+
+
+            <button type="submit" style="margin-left:37%;margin-top:10px;background:#447604" >Submit</button>
+            </fieldset>
+        </form>
+    </div>

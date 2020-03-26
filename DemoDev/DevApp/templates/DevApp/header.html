@@ -43,6 +43,23 @@
         reloadloc();
         localStorage.removeItem('wrap');
       }
+          $("form").on('submit', function (e) {
+             //prevent form submission / page refresh
+             e.preventDefault();
+              console.log('form submitted');
+             //submit form with ajax
+             $.get(window.location, $(this).serialize());
+          });
+          $("form select").on('change', function () {
+             $("form").trigger('submit');
+          });
+
+          $("input").on("click", function(){
+            if ( $(this).attr("type") === "radio" ) {
+              $(this).parent().siblings().removeClass("isSelected");
+            }
+            $(this).parent().toggleClass("isSelected");
+          });
 
     </script>
 

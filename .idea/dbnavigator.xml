@@ -40,8 +40,19 @@
     <filter-actions connection-id="384f4d0d-02d5-4c14-a451-3acde48cdb1d" dataset="main.DevApp_account" active-filter-id="52811fda-ae1d-46b7-b2fa-aebefc599d89">
       <filter id="52811fda-ae1d-46b7-b2fa-aebefc599d89" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
+    <filter-actions connection-id="384f4d0d-02d5-4c14-a451-3acde48cdb1d" dataset="main.DevApp_flips" active-filter-id="3b216170-0367-4195-9124-6c2cc9275439">
+      <filter id="3b216170-0367-4195-9124-6c2cc9275439" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
     <filter-actions connection-id="384f4d0d-02d5-4c14-a451-3acde48cdb1d" dataset="main.DevApp_images" active-filter-id="c6df77b3-e1b6-4e1e-b8cf-966f8eb75224">
       <filter id="c6df77b3-e1b6-4e1e-b8cf-966f8eb75224" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="384f4d0d-02d5-4c14-a451-3acde48cdb1d" dataset="main.DevApp_order_image" active-filter-id="8e989621-54ec-483b-85b0-f17ae453f74d">
+      <filter id="8e989621-54ec-483b-85b0-f17ae453f74d" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="384f4d0d-02d5-4c14-a451-3acde48cdb1d" dataset="main.DevApp_flip_image" active-filter-id="">
+      <filter id="f44e46fd-bbc1-4fe5-81d8-7dbe2e182927" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
     </filter-actions>
     <filter-actions connection-id="384f4d0d-02d5-4c14-a451-3acde48cdb1d" dataset="main.DevApp_inventory" active-filter-id="c0486ca5-ae1d-4d27-b72b-8073e29b4f6b">
       <filter id="c0486ca5-ae1d-4d27-b72b-8073e29b4f6b" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />

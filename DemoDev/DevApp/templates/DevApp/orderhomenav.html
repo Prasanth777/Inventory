@@ -20,40 +20,15 @@
                         </ul>
                         {% else %}
                         <ul class="nav navbar-nav mr-auto">
-                        <li class="dropdown" ><form action="{% url 'gallery_admin_filter' %}" method="get" name="colorchange" >
+                        <li class="dropdown" ><form action="{% url 'order_admin_filter' %}" method="get" name="colorchange" >
                             {% csrf_token %}
-                                   <select id="comp" name="company"  onChange="form.submit();" style="  ">
+                                   <select id="comp1" name="company"  onChange="form.submit();" style="  ">
                                        <option value="" disable hidden style="text-align:left" ><b>Company</b></option>
                                        <option value="" {% ifequal "" request.GET.company %} selected {% endifequal %} >None </option>
                                        {% for a in Accounts%}
                                        <option value="{{a.companyname}}" {% ifequal a.companyname request.GET.company %} selected {% endifequal %} >{{a.companyname}}</option>
                                        {% endfor %}
 
-                                   </select>
-                                   <select id="cat" name="category"  onChange="form.submit();" style=" ">
-                                       <option value=""  disable hidden  ><b>Class</b></option>
-                                       <option value=""  {% ifequal "" request.GET.category %} selected {% endifequal %}  >None</option>
-                                       <option value="3door" {% ifequal request.GET.category "3door" %} selected  {% endifequal %}   >3-Door</option>
-                                       <option value="4door" {% ifequal request.GET.category "4door" %} selected  {% endifequal %}   >4-Door</option>
-                                       <option value="topmount" {% ifequal request.GET.category "topmount" %} selected  {% endifequal %}   >Top Mount</option>
-                                       <option value="bottomfreezer" {% ifequal request.GET.category "bottomfreezer" %} selected  {% endifequal %}   >Bottom Freezer</option>
-                                       <option value="gasstove" {% ifequal request.GET.category "gasstove" %} selected  {% endifequal %}   >Gas Stove</option>
-                                       <option value="electricstove" {% ifequal request.GET.category "electricstove" %} selected  {% endifequal %}   >Electric Stove</option>
-                                       <option value="basicdryer" {% ifequal request.GET.category "basicdryer" %} selected  {% endifequal %}   >Basic Dryer</option>
-                                       <option value="fldryer" {% ifequal request.GET.category "fldryer" %} selected  {% endifequal %}   >FL Dryer</option>
-                                       <option value="tlwasher" {% ifequal request.GET.category "tlwasher" %} selected  {% endifequal %}   >TL Washer</option>
-                                       <option value="flwasher" {% ifequal request.GET.category "flwasher" %} selected  {% endifequal %}   >FL Washer</option>
-                                       <option value="Sets" {% ifequal request.GET.category "sets" %} selected  {% endifequal %}   >Sets</option>
-                                       <option value="freezer" {% ifequal request.GET.category "freezer" %} selected  {% endifequal %}   >Freezer</option>
-                                       <option value='quaddoor' {% ifequal request.GET.category "quaddoor" %} selected  {% endifequal %} >Quad Door</option>
-                                   </select>
-                                   <select id="colo" name="color"  onChange="form.submit();" style="">
-                                       <option value=""  disable hidden  ><b>Color</b></option>
-                                       <option value="" {% ifequal "" request.GET.color %} selected {% endifequal %} >None</option>
-                                       <option value="stainless" {% ifequal request.GET.color "stainless" %}selected  {% endifequal %} >Stainless</option>
-                                       <option value="black" {% ifequal request.GET.color "black" %}selected  {% endifequal %} >Black</option>
-                                       <option value="white" {% ifequal request.GET.color "white" %}selected  {% endifequal %} >White</option>
-                                       <option value="beige" {% ifequal request.GET.color "beige" %}selected  {% endifequal %} >Beige</option>
                                    </select>
 
                             <input type="submit" style="display:none"/>

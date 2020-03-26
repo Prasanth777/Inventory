@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Account,Inventory,Images
+from .models import Account,Inventory,Images,Orders,Order_Image,Flip_Image,Flips
 
 
 # Register your models here.
@@ -24,7 +24,22 @@ class InventoryAdmin(admin.ModelAdmin):
 class ImagesAdmin(admin.ModelAdmin):
     list_display = ["inv","image"]
 
+class OrdersAdmin(admin.ModelAdmin):
+    list_display = ["ord","name","timestamp"]
+
+class Orders_ImagesAdmin(admin.ModelAdmin):
+    list_display = ["ordimg"]
+
+class Flip_ImagesAdmin(admin.ModelAdmin):
+    list_display = ["flipimg"]
+
+class FlipsAdmin(admin.ModelAdmin):
+    list_display = ["flip","brand"]
+
 admin.site.register(Account,AccountAdmin)
 admin.site.register(Inventory,InventoryAdmin)
 admin.site.register(Images,ImagesAdmin)
-
+admin.site.register(Orders,OrdersAdmin)
+admin.site.register(Order_Image,Orders_ImagesAdmin)
+admin.site.register(Flip_Image,Flip_ImagesAdmin)
+admin.site.register(Flips,FlipsAdmin)
