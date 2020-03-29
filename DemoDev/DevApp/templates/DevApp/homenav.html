@@ -22,7 +22,7 @@
                         <ul class="nav navbar-nav mr-auto">
                         <li class="dropdown" ><form action="{% url 'gallery_admin_filter' %}" method="get" name="colorchange" >
                             {% csrf_token %}
-                                   <select id="comp" name="company"  onChange="form.submit();" style="  ">
+                                   <select id="comp" name="company"  onChange="this.form.submit();" style="  ">
                                        <option value="" disable hidden style="text-align:left" ><b>Company</b></option>
                                        <option value="" {% ifequal "" request.GET.company %} selected {% endifequal %} >None </option>
                                        {% for a in Accounts%}
@@ -30,7 +30,7 @@
                                        {% endfor %}
 
                                    </select>
-                                   <select id="cat" name="category"  onChange="form.submit();" style=" ">
+                                   <select id="cat" name="category"  onChange="this.form.submit();" style=" ">
                                        <option value=""  disable hidden  ><b>Class</b></option>
                                        <option value=""  {% ifequal "" request.GET.category %} selected {% endifequal %}  >None</option>
                                        <option value="3door" {% ifequal request.GET.category "3door" %} selected  {% endifequal %}   >3-Door</option>
@@ -47,7 +47,7 @@
                                        <option value="freezer" {% ifequal request.GET.category "freezer" %} selected  {% endifequal %}   >Freezer</option>
                                        <option value='quaddoor' {% ifequal request.GET.category "quaddoor" %} selected  {% endifequal %} >Quad Door</option>
                                    </select>
-                                   <select id="colo" name="color"  onChange="form.submit();" style="">
+                                   <select id="colo" name="color"  onChange="this.form.submit();" style="">
                                        <option value=""  disable hidden  ><b>Color</b></option>
                                        <option value="" {% ifequal "" request.GET.color %} selected {% endifequal %} >None</option>
                                        <option value="stainless" {% ifequal request.GET.color "stainless" %}selected  {% endifequal %} >Stainless</option>

@@ -1,16 +1,7 @@
 {% load static %}
 {% static "Image" as baseUrl %}
 <script>
-    $("form").on('submit', function (e) {
-   //prevent form submission / page refresh
-   e.preventDefault();
-    console.log('form submitted');
-   //submit form with ajax
-   $.get(window.location, $(this).serialize());
-});
-$("form select").on('change', function () {
-   $("form").trigger('submit');
-});
+
 </script>
 <div class="container" >
     <div class="row" >

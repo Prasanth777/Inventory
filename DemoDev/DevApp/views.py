@@ -89,10 +89,10 @@ def orders_admin(request,id=None):
 
 def gallery_filter(request):
     if request.method == 'GET':
-        Inventorys = None
         Accounts = Account.objects.all()
         if not request.GET['company'] and not request.GET['category'] and not request.GET['color']:
-            Inventorys = Inventory.objects.filter(category=None, color=None)
+            print("All None")
+            Inventorys = Inventory.objects.all()
 
         if request.GET['company'] and request.GET['category'] and request.GET['color']:
             company=request.GET['company']
@@ -371,8 +371,8 @@ def delete_image(request,pk):
 def class_change(request,id):
     if request.method == "POST":
         change = get_object_or_404(Inventory,id=id)
-        cat = request.POST.get('category',None)
-        clr = request.POST.get('color',None)
+        cat = request.POST.get('category')
+        clr = request.POST.get('color')
         print(cat)
         print(clr)
         change.category = cat
