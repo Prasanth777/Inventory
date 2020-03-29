@@ -51,7 +51,7 @@
                    {% ifequal f.flip i %}
                 <form method = "get" action="{% url 'flip' i.id f.id%}" onsubmit="yHandler()">
                    {% csrf_token %}
-                   <center><div class="single-shop-product" style="width:100%;"><button type="submit" class="add_to_cart_button"  style="background-color:black;width:99%;">Flip</button> </div></center>
+                   <center><div class="single-shop-product" style="width:100%;"><button type="submit" class="add_to_cart_button"  style="background-color:black;width:100%;">Flip</button> </div></center>
                </form>
                    {% endifequal %}
                     {% endfor %}
