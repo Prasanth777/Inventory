@@ -7,6 +7,7 @@ from .forms import InventoryForm,FlipForm,OrderForm
 from django.forms import modelformset_factory
 import os.path
 from django.core.files.base import ContentFile
+import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -49,6 +50,7 @@ def register(request):
         else:
             messages.error(request,"Password not matching")
             return redirect('register')
+	os.system("touch /var/www/www_salehound_net_wsgi.py")
     return render(request,'DevApp/register.html/')
 
 
