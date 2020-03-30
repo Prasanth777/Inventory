@@ -73,7 +73,7 @@ float:right;
 color:black;padding-top:15px;padding-left:0px;margin-left:45px;margin-right:150px;padding-right:0px;width:91%
 }
 .container{
-margin:30px;width:100%;height:100%;background:#ffffff;
+margin:30px;width:99%;height:100%;background:#ffffff;
 }
 .panel-body{
 display: inline-block;text-color:black;;margin-left:0px;padding-left:0px;padding-right:0px;padding-bottom:0px
@@ -135,15 +135,19 @@ float:right;margin:0px;padding:0px;
 
 #comp1{
 background:#447604;color: white;margin:0px 6px 6px 0px;padding:0px ;padding-left:0px;border-radius:3px;position:relative;padding: 20px; width:130px;
+-webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 #comp{
 background:#447604;color: white;margin:0px 6px 6px 0px;padding:0px ;padding-left:0px;border-radius:3px;position:relative;padding: 20px; width:130px;
+ -webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 #colo{
  background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:130px;
+ -webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 #cat{
 background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:130px;
+-webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 
 #name{
@@ -1469,8 +1473,10 @@ display: block;
 .container{
 height:100%;
 background:#ffffff;
-width: 100%;
+width: 99%;
 margin-left: 0%;
+ transform: scale(0.975);
+   transform-origin: 0 0;
 }
 .container .row .col-md-3{
 margin-left:0px;margin-top:0px;margin-bottom:0px;margin-right:0px;width:48%;height:400px;float:left;display:inline;padding-right:0px;
@@ -1553,16 +1559,20 @@ float:left;margin-left:0px;margin-right:0px;padding-left:0px;padding-right:0px;
 float:left;margin-left:0px;margin-right:0px;padding-left:0px;padding-right:0px;
 }
 #comp{
-background:#447604;color: white;margin:0px 6px 6px 0px;padding:0px ;padding-left:10px;border-radius:3px;position:relative;padding: 20px; width:130px;
+background:#447604;color: white;margin:0px 6px 6px 0px;padding:0px ;padding-left:10px;border-radius:3px;position:relative;padding: 20px; width:125px;
+-webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 #comp1{
-background:#447604;color: white;margin:0px 6px 6px 0px;padding:0px ;padding-left:10px;border-radius:3px;position:relative;padding: 20px; width:130px; margin-left:38%;
+background:#447604;color: white;margin:0px 6px 6px 0px;padding:0px ;padding-left:10px;border-radius:3px;position:relative;padding: 20px; width:125px; margin-left:38%;
+-webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 #colo{
- background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:130px;
+ background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:125px;
+-webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 #cat{
-background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:130px;
+background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:120px;
+-webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 #name{
 width:99%;margin:0px;padding-bottom:0px;height:30px;padding-left:2px;
@@ -1629,6 +1639,7 @@ float:left;
 html{
 background-color:white;
 min-height:100%;
+width:98%;
 position:relative;
 }
 
