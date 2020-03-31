@@ -25,13 +25,13 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="384f4d0d-02d5-4c14-a451-3acde48cdb1d">
-        <schema name="main" object-types="dataset trigger, view, table, column, constraint, index" />
+        <schema name="main" object-types="index, view, constraint, dataset trigger, table, column" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="384f4d0d-02d5-4c14-a451-3acde48cdb1d">
-      <console name="Connection 2" type="STANDARD" schema="main" session="Main">select * from &quot;DevApp_account&quot;;</console>
+      <console name="Connection 2" type="STANDARD" schema="main" session="Main"><![CDATA[select * from "DevApp_account";]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -59,7 +59,10 @@
       </filter>
     </filter-actions>
     <filter-actions connection-id="384f4d0d-02d5-4c14-a451-3acde48cdb1d" dataset="main.DevApp_inventory" active-filter-id="c0486ca5-ae1d-4d27-b72b-8073e29b4f6b">
-      <filter id="c0486ca5-ae1d-4d27-b72b-8073e29b4f6b" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+      <filter id="c0486ca5-ae1d-4d27-b72b-8073e29b4f6b" name=" | " temporary="false" custom-name="false" type="basic" join-type="OR">
+        <condition column="color" operator="is null" value="" active="true" />
+        <condition column="category" operator="is null" value="" active="true" />
+      </filter>
     </filter-actions>
     <filter-actions connection-id="384f4d0d-02d5-4c14-a451-3acde48cdb1d" dataset="main.django_session" active-filter-id="a2d0d280-1956-4ffb-b57a-2c2439d3aeb1">
       <filter id="a2d0d280-1956-4ffb-b57a-2c2439d3aeb1" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND" />

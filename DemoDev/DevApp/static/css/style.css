@@ -1,4 +1,16 @@
 @media (min-width:767px){
+.client{
+
+}
+#upl{
+margin-right:10%;
+}
+#od{
+margin-right:16%;
+}
+#sub{
+margin-top:10px;background:#447604;margin-right:11%;
+}
 #img1{
 width:80px;height:100px;display:block;float:left;padding:1px 3px 0px 0px;
 }
@@ -35,11 +47,15 @@ margin:0px;
 
 }
 #cont{
-width:475px;height:374px;margin-left:40%;
+width:475px;height:374px;margin-left:39%;
+}
+#cont1{
+width:475px;height:574px;margin-left:39%;
 }
 .image-preview__image{
-width:75px;
-height:100px;
+width:50px;
+height:75px;
+padding:2px;
 }
 .image-preview{
 
@@ -144,6 +160,10 @@ background:#447604;color: white;margin:0px 6px 6px 0px;padding:0px ;padding-left
 #colo{
  background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:130px;
  -webkit-appearance: none;-moz-appearance: none;appearance: none;
+}
+#but{
+ background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;margin-left:6px;padding-left:20px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:130px;border:none;height:62px;
+ -webkit-appearance: none;-moz-appearance: none;appearance: none;font-weight: normal;
 }
 #cat{
 background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:130px;
@@ -1383,6 +1403,9 @@ width:75px;height:100px;display:block;float:left;padding:2px 5px 0px 0px;
 
 
 @media (max-width:767px){
+#sub{
+margin-top:10px;background:#447604;
+}
 #img2{
 width:33%;height:100px;display:block;float:left;padding:2px 5px 0px 0px;
 }
@@ -1414,16 +1437,19 @@ margin-right:2%;
 }
 
 #cont{
-width:400px;height:374px;margin-left:5%;
+width:400px;height:374px;margin-left:4%;
+}
+#cont1{
+width:400px;height:574px;margin-left:5%;
 }
 .image-preview{
 
 
-float:center;
+
 width:75px;
 min-height:75px;
-margin-left:14%;
-margin-right:10px;
+margin-left:10%;
+margin-right:50px;
 padding:0px;
 padding-right:0px;
 display:flex;
@@ -1559,19 +1585,23 @@ float:left;margin-left:0px;margin-right:0px;padding-left:0px;padding-right:0px;
 float:left;margin-left:0px;margin-right:0px;padding-left:0px;padding-right:0px;
 }
 #comp{
-background:#447604;color: white;margin:0px 6px 6px 0px;padding:0px ;padding-left:10px;border-radius:3px;position:relative;padding: 20px; width:125px;
--webkit-appearance: none;-moz-appearance: none;appearance: none;
+background:#447604;color: white;margin:0px 6px 6px 0px;padding:0px ;margin-left:15px;border-radius:3px;position:relative;padding: 20px; width:30%;
+-webkit-appearance: none;-moz-appearance: none;appearance: none;padding-left:10px;
 }
 #comp1{
 background:#447604;color: white;margin:0px 6px 6px 0px;padding:0px ;padding-left:10px;border-radius:3px;position:relative;padding: 20px; width:125px; margin-left:38%;
 -webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 #colo{
- background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:125px;
+ background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:30%;
 -webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
+#but{
+ background:#447604;color: white;margin-left:15px;border-radius:3px;position:relative;text-align-last:center;padding: 20px;width:94.5%;margin-right:20px;
+-webkit-appearance: none;-moz-appearance: none;appearance: none;font-weight: normal;
+}
 #cat{
-background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:120px;
+background:#447604;color: white;margin:0px 6px 6px 0px;padding:20px ;padding-left:10px;border-radius:3px;position:relative;text-align-last:left;padding: 20px;width:30%;
 -webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 #name{
@@ -1880,7 +1910,17 @@ z-index: 999;}
     text-align:center;
 
 }
+#dropdown{
+max-width:100%;
+margin:0px;
+padding:0px;
+}
+.mainmenu-area ul.navbar-nav li.new{
 
+max-width:100%;
+margin:0px;
+padding:0px;
+}
 .mainmenu-area ul.navbar-nav li.dropdown select {
     background:#44760;
     color: white;

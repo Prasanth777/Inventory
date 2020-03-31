@@ -1,5 +1,6 @@
-<div class="container" style=" " id="cont">
-        <h1 style="margin-left:33%"><strong>Order</strong></h1>
+<div class="container" style=" " id="cont1">
+    <center>
+        <h1 style="" id="od"><strong>Order</strong></h1>
         <form action="{% url 'upload_order' %}" method="post" enctype="multipart/form-data">
             <fieldset >
             {% csrf_token %}
@@ -38,7 +39,8 @@
             </script>
 
 
-            <button type="submit" style="margin-left:37%;margin-top:10px;background:#447604" >Submit</button>
+            <button type="submit" style="background:#447604" id="sub">Submit</button>
             </fieldset>
         </form>
+        </center>
     </div>

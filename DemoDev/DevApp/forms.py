@@ -4,9 +4,9 @@ from .models import Inventory,Orders,Account,Flips
 
 
 class InventoryForm(ModelForm):
-    image = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True,'class' : 'upload'}))
-    brand = forms.CharField(widget=forms.TextInput(attrs={'class':'brand','id':'brand'}))
-    price = forms.CharField(widget=forms.TextInput(attrs={'class':'price','id':'price'}))
+    image = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True,'class' : 'upload'}), label_suffix='')
+    brand = forms.CharField(widget=forms.TextInput(attrs={'class':'price','id':'brand'}), label_suffix='')
+    price = forms.CharField(widget=forms.TextInput(attrs={'class':'price','id':'price'}), label_suffix='')
 
     class Meta:
         model=Inventory
@@ -18,8 +18,8 @@ class InventoryForm(ModelForm):
         ]
 
 class FlipForm(ModelForm):
-    image = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True, 'class': 'upload'}))
-    brand = forms.CharField(widget=forms.TextInput(attrs={'class': 'brand'}))
+    image = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True, 'class': 'upload'}), label_suffix='')
+    brand = forms.CharField(widget=forms.TextInput(attrs={'class': 'brand'}), label_suffix='')
     class Meta:
         model=Flips
         fields=[
@@ -43,7 +43,7 @@ class OrderForm(ModelForm):
     delivery = forms.CharField(label="Del",widget=forms.TextInput(attrs={'class': 'price'}), label_suffix='')
     time = forms.CharField(widget=forms.TextInput(attrs={'class': 'price'}), label_suffix='')
     address = forms.CharField(label="Addr",widget=forms.TextInput(attrs={'class': 'price'}), label_suffix='')
-    client = forms.CharField(label="Comp:",widget=forms.Select(choices=Company_choice), label_suffix='')
+    client = forms.CharField(label="Comp ",widget=forms.Select(choices=Company_choice,attrs={'class': 'client'}), label_suffix='')
     class Meta:
         model=Orders
         fields=[

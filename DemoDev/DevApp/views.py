@@ -8,6 +8,7 @@ from django.forms import modelformset_factory
 import os.path
 from django.core.files.base import ContentFile
 import os
+from django.urls import resolve
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -60,15 +61,18 @@ def logout(request):
 
 def gallery_admin(request,id=None):
     if request.user.is_authenticated:
-        if request.method == 'GET':
-            #Images_dict={}
-            #User = get_object_or_404(Account,id=id)
-            Inventorys = Inventory.objects.all()
-            Accounts = Account.objects.all()
-            #for item in Inventorys:
-                #Images_dict[item] = Images.objects.filter(inv_id=item.id)
-            #Images_dict = Images.objects.filter(inv__id=Inventorys.id)
-            return render(request,'DevApp/gallery.html',{'Inventory_Images':Inventorys,'Accounts':Accounts})
+        if request.user.is_admin:
+            if request.method == 'GET':
+                #Images_dict={}
+                #User = get_object_or_404(Account,id=id)
+                Inventorys = Inventory.objects.all()
+                Accounts = Account.objects.all()
+                #for item in Inventorys:
+                    #Images_dict[item] = Images.objects.filter(inv_id=item.id)
+                #Images_dict = Images.objects.filter(inv__id=Inventorys.id)
+                return render(request,'DevApp/gallery.html',{'Inventory_Images':Inventorys,'Accounts':Accounts})
+        else:
+            return redirect('gallery')
     else:
         return redirect('login')
 
@@ -373,15 +377,22 @@ def delete_image(request,pk):
 def class_change(request,id):
     if request.method == "POST":
         change = get_object_or_404(Inventory,id=id)
-        cat = request.POST.get('category')
-        clr = request.POST.get('color')
-        print(cat)
-        print(clr)
-        change.category = cat
-        change.color = clr
+        if request.POST.get('category'):
+            cat = request.POST.get('category')
+            change.category = cat
+            print(cat)
+        if request.POST.get('color'):
+            clr = request.POST.get('color')
+            change.color = clr
+            print(clr)
         change.save()
         print("Category or Color changed")
-        return redirect('gallery_admin_with_pk', id=request.user.id)
+        current_url = resolve(request.path_info).url_name
+        prev = request.META.get('HTTP_REFERER')
+        if prev.split("/")[-2] == "new":
+            return redirect('new')
+        else:
+            return redirect('gallery_admin_with_pk', id=request.user.id)
 
 def order_form(request,id):
     if request.method == "POST":
@@ -462,3 +473,9 @@ def upload_order(request):
 
     return render(request,'DevApp/createorder.html',{'form':form})
 
+def new(request):
+    print("Inside New")
+    if request.method == 'GET':
+        Accounts = Account.objects.all()
+        Inventorys = Inventory.objects.filter(category=None) | Inventory.objects.filter(color=None)
+    return render(request, 'DevApp/new.html', {'Inventory_Images': Inventorys, 'Accounts': Accounts})

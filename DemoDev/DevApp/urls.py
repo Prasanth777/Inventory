@@ -2,10 +2,10 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.login,name='index'),
+    url(r'^$', views.gallery_admin,name='index'),
     url(r'^login/$', views.login,name='login'),
     url(r'^register/$', views.register,name='register'),
-    url(r'^gallery/$', views.gallery,name='gallery'),
+    url(r'^inventory/$', views.gallery,name='gallery'),
     url(r'^logout/$',views.logout,name='logout'),
     url(r'^upload/$',views.upload_image,name='upload'),
     url(r'^flip/(?P<id1>\d+)/(?P<id2>\d+)/$',views.flip,name='flip'),
@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^orderform/(?P<id>\d+)$',views.order_form,name="order_form"),
     url(r'^orderavailform/(?P<id>\d+)$',views.order_avail_form,name="order_avail_form"),
     url(r'^upload_order/$',views.upload_order,name='upload_order'),
+    url(r'^new/$',views.new,name='new'),
 
 ]

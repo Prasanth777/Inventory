@@ -20,7 +20,7 @@
                         </ul>
                         {% else %}
                         <ul class="nav navbar-nav mr-auto">
-                        <li class="dropdown" ><form action="{% url 'gallery_admin_filter' %}" method="get" name="colorchange" >
+                        <li class="dropdown" id="dropdown" ><form action="{% url 'gallery_admin_filter' %}" method="get" name="colorchange" >
                             {% csrf_token %}
                                    <select id="comp" name="company"  onChange="this.form.submit();" style="  ">
                                        <option value="" disable hidden style="text-align:left" ><b>Company</b></option>
@@ -58,6 +58,9 @@
 
                             <input type="submit" style="display:none"/>
                         </form></li>
+                            <li class="new">
+                                <a id="but" type="button" style="" href="{% url 'new' %}"  method="get" >New</a>
+                            </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right" >
                         <li ><a href="{% url 'gallery_admin_with_pk' user.id %}" style="color: black;font-size: 14px;font-weight: 700;padding: 20px;padding-left:0px;padding-right:15px;text-align:center;"></span>&emsp;Inventory</a></li>
