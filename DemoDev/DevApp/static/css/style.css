@@ -1524,27 +1524,23 @@ display: block;width:100%;height:259px;
 }
 .container .row .col-md-4{
 margin-left:0px;margin-top:0px;margin-bottom:5px;margin-right:0px;width:50%;height:730px;float:left;display:inline;padding-right:0px;border:none;
-color: #000000;
--webkit-text-fill-color:#000000; /* Override iOS / Android font color change */
--webkit-opacity:1;
 }
 .container .row .col-md-4 .panel{
 width:100%;background-color:#ffffff;border:none;margin:0px;height:100%;border:none;
-color: #000000;
--webkit-text-fill-color:#000000; /* Override iOS / Android font color change */
--webkit-opacity:1;
 }
 .container .row .col-md-4 .panel .panel-body{
 display: inline-block;text-color:black;;margin-left:0px;padding-left:0px;padding-right:0px;padding-bottom:0px;width:100%;padding-top:0px;border:none;
-color: #000000;
--webkit-text-fill-color:#000000; /* Override iOS / Android font color change */
--webkit-opacity:1;
 }
 
 .container .row .col-md-4 .panel .carousel{}
 
 .container .row .col-md-4 .panel .carousel .img {
 display: block;width:100%;height:259px;
+}
+#ordform1{
+color: #000000;
+-webkit-text-fill-color:#000000; /* Override iOS / Android font color change */
+-webkit-opacity:1;
 }
 .container .row .col-xs-6{
 margin-left:0px;margin-top:0px;margin-bottom:5px;margin-right:0px;width:48%;height:450px;float:left;display:inline;padding-right:0px;border:none;
