@@ -11,7 +11,7 @@
                <div id="myCarousel" class="carousel slide" data-ride="carousel" style="">
                    <a href="{{i.image.url}}"><center><img src="{{i.image.url}}" alt="Not Found" class="img" style=""></center></a> </div>
                 <div class="panel-body" style="">
-                <div class="panel-body" style="display: inline-block;text-color:black;padding:0px ">
+
                    <form action="{% url 'order_form' i.id%}" method="post" name="ordform" id="ordform1" onsubmit="yHandler()">
                        {% csrf_token %}
                        <p style="" id="name"><label for="name"> </label>
@@ -67,7 +67,7 @@
                     <div  id="myCarousel5" class="carousel slide" data-ride="carousel" style="">
 
                </div>
-                   </div>
+
                 </div>
 
 

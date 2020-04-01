@@ -1530,6 +1530,7 @@ width:100%;background-color:#ffffff;border:none;margin:0px;height:100%;border:no
 }
 .container .row .col-md-4 .panel .panel-body{
 display: inline-block;text-color:black;;margin-left:0px;padding-left:0px;padding-right:0px;padding-bottom:0px;width:100%;padding-top:0px;border:none;
+-webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 
 .container .row .col-md-4 .panel .carousel{}
@@ -1562,6 +1563,7 @@ width:100%;background-color:#ffffff;border:none;margin:0px;height:100%;border:no
 }
 .container .row .col-xs-4 .panel .panel-body{
 display: inline-block;text-color:black;;margin-left:0px;padding-left:0px;padding-right:0px;padding-bottom:0px;width:100%;padding-top:0px;border:none;
+-webkit-appearance: none;-moz-appearance: none;appearance: none;
 }
 
 .container .row .col-xs-4 .panel .carousel{}
