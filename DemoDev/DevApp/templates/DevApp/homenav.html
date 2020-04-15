@@ -46,6 +46,10 @@
                                        <option value="Sets" {% ifequal request.GET.category "sets" %} selected  {% endifequal %}   >Sets</option>
                                        <option value="freezer" {% ifequal request.GET.category "freezer" %} selected  {% endifequal %}   >Freezer</option>
                                        <option value='quaddoor' {% ifequal request.GET.category "quaddoor" %} selected  {% endifequal %} >Quad Door</option>
+                                       <option value='sidebyside' {% ifequal request.GET.category "sidebyside" %} selected  {% endifequal %} >Side By Side</option>
+                                       <option value='laundrycenter' {% ifequal request.GET.category "laundrycenter" %} selected  {% endifequal %} >Laundry Center</option>
+                                       <option value='flsets' {% ifequal request.GET.category "flsets" %} selected  {% endifequal %} >FL Sets</option>
+                                       <option value='dishwasher' {% ifequal request.GET.category "dishwasher" %} selected  {% endifequal %} >Dish Washer</option>
                                    </select>
                                    <select id="colo" name="color"  onChange="this.form.submit();" style="">
                                        <option value=""  disable hidden  ><b>Color</b></option>
@@ -54,6 +58,11 @@
                                        <option value="black" {% ifequal request.GET.color "black" %}selected  {% endifequal %} >Black</option>
                                        <option value="white" {% ifequal request.GET.color "white" %}selected  {% endifequal %} >White</option>
                                        <option value="beige" {% ifequal request.GET.color "beige" %}selected  {% endifequal %} >Beige</option>
+                                       <option value="blue" {% ifequal request.GET.color "blue" %}selected  {% endifequal %} >Blue</option>
+                                       <option value="silver" {% ifequal request.GET.color "silver" %}selected  {% endifequal %} >Silver</option>
+                                       <option value="charcoal" {% ifequal request.GET.color "charcoal" %}selected  {% endifequal %} >Charcoal</option>
+                                       <option value="blackwhite" {% ifequal request.GET.color "blackwhite" %}selected  {% endifequal %} >Black&White</option>
+                                       <option value="red" {% ifequal request.GET.color "red" %}selected  {% endifequal %} >Red</option>
                                    </select>
 
                             <input type="submit" style="display:none"/>
