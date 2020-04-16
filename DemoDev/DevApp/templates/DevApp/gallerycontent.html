@@ -53,6 +53,10 @@
                                <option value="Sets" {% ifequal i.category "sets" %} selected  {% endifequal %}   >Sets</option>
                                <option value="freezer" {% ifequal i.category "freezer" %} selected  {% endifequal %}   >Freezer</option>
                                <option value='quaddoor' {% ifequal i.category "quaddoor" %} selected  {% endifequal %} >Quad Door</option>
+                               <option value='sidebyside' {% ifequal i.category "sidebyside" %} selected  {% endifequal %} >Side By Side</option>
+                               <option value='laundrycenter' {% ifequal i.category "laundrycenter" %} selected  {% endifequal %} >Laundry Center</option>
+                               <option value='flsets' {% ifequal i.category "flsets" %} selected  {% endifequal %} >FL Sets</option>
+                               <option value='dishwasher' {% ifequal i.category "dishwasher" %} selected  {% endifequal %} >Dish Washer</option>
                            </select>
                        </p>
                        <p style="" id="color"><label for="color"> </label>
@@ -62,6 +66,11 @@
                                <option value="black" {% ifequal i.color "black" %}selected  {% endifequal %} >Black</option>
                                <option value="white" {% ifequal i.color "white" %}selected  {% endifequal %} >White</option>
                                <option value="beige" {% ifequal i.color "beige" %}selected  {% endifequal %} >Beige</option>
+                               <option value="blue" {% ifequal i.color "blue" %}selected  {% endifequal %} >Blue</option>
+                               <option value="silver" {% ifequal i.color "silver" %}selected  {% endifequal %} >Silver</option>
+                               <option value="charcoal" {% ifequal i.color "charcoal" %}selected  {% endifequal %} >Charcoal</option>
+                               <option value="blackwhite" {% ifequal i.color "blackwhite" %}selected  {% endifequal %} >Blk&Wh</option>
+                               <option value="red" {% ifequal i.color "red" %}selected  {% endifequal %} >Red</option>
                            </select>
                        </p>
                        <input type="submit" style="display:none"/>
