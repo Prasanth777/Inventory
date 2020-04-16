@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 
-
-
-
+from PIL import Image
+from io import BytesIO
+from django.core.files.base import ContentFile
 # Create your models here.
 
 class MyAccountManager(BaseUserManager):
@@ -151,3 +151,7 @@ class Images(models.Model):
         super().delete(*args,**kwargs)
     def __str__(self):
         return self.inv.brand
+
+
+
+
