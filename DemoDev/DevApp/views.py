@@ -9,7 +9,7 @@ import os.path
 from django.core.files.base import ContentFile
 import os
 from django.urls import resolve
-from PIL import Image, ExifTags
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Create your views here.
@@ -329,30 +329,6 @@ def delete_orders(request,id):
         else:
             return redirect('orders_admin_with_pk', id=request.user.id)
 
-def rotate_image(filepath):
-  try:
-    im = Image.open(filepath)
-    for orientation in ExifTags.TAGS.keys():
-      if ExifTags.TAGS[orientation] == 'Orientation':
-            break
-    exif = dict(im._getexif().items())
-
-    if exif[orientation] == 3:
-        rotate_image = im.rotate(180, expand=True)
-        print("Image Rotated by 180")
-    elif exif[orientation] == 6:
-        rotate_image = im.rotate(270, expand=True)
-        print("Image Rotated by 270")
-    elif exif[orientation] == 8:
-        rotate_image = im.rotate(90, expand=True)
-        print("Image Rotated by 90")
-    rotate_image.save(filepath.file.name, overwrite=True)
-    im.close()
-
-  except (AttributeError, KeyError, IndexError):
-    # cases: image don't have getexif
-    pass
-
 def upload_image(request):
     if request.method == 'POST':
         files = request.FILES.getlist('image')
@@ -362,28 +338,11 @@ def upload_image(request):
             inv = form.save(commit=False)
             inv.owner = request.user
             inv.save()
-            if inv.image.name.split(".")[-1].upper() == "JPG":
-                inv.image.save("%s.jpeg" %inv.image.name.split("/")[-1].split(".")[0], ContentFile(inv.image.read()))
-                rotate_image(inv.image)
-                #im = Image.open(inv.image)
-                #rotated_image = im.rotate(270, expand=True)
-                #rotated_image.save(inv.image.file.name, overwrite=True)
-                #im.close()
-                print("Thumbnail Image format changed from jpg to jpeg")
 
             for f in files:
                 try:
                     invent = Images(inv=inv,image=f)
                     invent.save()
-                    if invent.image.name.split(".")[-1].upper() == "JPG":
-                        invent.image.save("%s.jpeg" % invent.image.name.split("/")[-1].split(".")[0],
-                                       ContentFile(invent.image.read()))
-                        rotate_image(invent.image)
-                        #im = Image.open(invent.image)
-                        #rotated_image = im.rotate(270, expand=True)
-                        #rotated_image.save(invent.image.file.name, overwrite=True)
-                        #im.close()
-                        print("Image format changed from jpg to jpeg")
 
 
                 except Exception as e:

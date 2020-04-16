@@ -37,7 +37,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="ToolWindowDB Browser.ShowToolbar" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/DemoDev/DevApp/static/css" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -115,10 +115,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1582135429960" />
-    <state x="277" y="56" key="SettingsEditor" timestamp="1587037277662">
+    <state x="277" y="56" key="SettingsEditor" timestamp="1582995279170">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587037277662" />
+    <state x="277" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582995279170" />
     <state width="200" height="160" key="TextEditor.color" timestamp="1585525353087">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
